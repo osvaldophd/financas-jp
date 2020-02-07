@@ -1,0 +1,27 @@
+<main id="topo">
+    <section class="hero">
+
+        <article class="vans-list" *ngIf="vans">
+            <article class="card" *ngFor="let van of vans" id="subirTopo">
+                <header class="card-header">
+                    <img src="{{ enderecoIMG }}/uploads/vans/{{ van.imagem }}">
+                </header>
+                <section class="card-body">
+                    <h2 class="texto-centro" *ngIf="van.nome">{{ van.modelo.nome }}</h2>
+                    <p *ngIf="van.matricula" class="texto-centro">{{ van.matricula }}</p>
+                    <p *ngIf="van.contactos[0]"><i class="fas fa-phone-alt icon-pequeno"></i> {{ van.contactos[0].contacto }}
+                        <br />
+                        <span *ngIf="van.contactos[1]"><i class="fas fa-phone-alt icon-pequeno"></i>
+              {{ van.contactos[1].contacto }}</span>
+                    </p>
+                </section>
+
+            </article>
+
+        </article>
+
+
+    </section>
+
+
+</main>

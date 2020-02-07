@@ -1,0 +1,78 @@
+<div class="page-wrapper" style="min-height: 586px;">
+    <!-- Bread crumb -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">Seja bem vindo</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">HOME</a></li>
+                <li class="breadcrumb-item active">INÍCIO</li>
+            </ol>
+        </div>
+    </div>
+    <!-- End Bread crumb -->
+    <!-- Container fluid  -->
+    <div class="container-fluid">
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-md-3" *ngIf='saldo[2]["TOTAL_DESPESA"]'>
+                <div class="card bg-primary p-20">
+                    <div class="media widget-ten">
+                        <div class="media-left meida media-middle">
+                            <span><i class="ti-money f-s-40"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h2 class="color-white">{{saldo[2]["TOTAL_DESPESA"]}}</h2>
+                            <p class="m-b-0">Despesas Mensais</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" *ngIf='saldo[0]["TOTAL_RENDIMENTO"]'>
+                <div class="card bg-pink p-20">
+                    <div class="media widget-ten">
+                        <div class="media-left meida media-middle">
+                            <span><i class="ti-money f-s-40"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h2 class="color-white">{{saldo[0]["TOTAL_RENDIMENTO"]}} </h2>
+                            <p class="m-b-0">Rendimento Total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" *ngIf='saldo[1]["TOTAL_POUPANCA"]'>
+                <div class="card bg-success p-20">
+                    <div class="media widget-ten">
+                        <div class="media-left meida media-middle">
+                            <span><i class="ti-money f-s-40"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h2 class="color-white">{{saldo[1]["TOTAL_POUPANCA"]}}</h2>
+                            <p class="m-b-0">Poupança</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" *ngIf='saldo[2]'>
+                <div class="card bg-danger p-20">
+                    <div class="media widget-ten">
+                        <div class="media-left meida media-middle">
+                            <span><i class="ti-money f-s-40"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h2 class="color-white">
+                                {{saldo[0]["TOTAL_RENDIMENTO"] - saldo[2]["TOTAL_DESPESA"] - saldo[1]["TOTAL_POUPANCA"] }} </h2>
+                            <p class="m-b-0">Saldo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /# row -->
+
+        <!-- End PAge Content -->
+    </div><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- End Container fluid  -->
+</div>

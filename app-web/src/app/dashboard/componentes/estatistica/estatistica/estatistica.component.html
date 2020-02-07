@@ -1,0 +1,97 @@
+<body class="fix-header fix-sidebar">
+    <div class="main-wrapper">
+        <!--Cabecalho-->
+        <app-header></app-header>
+        <!--Fim Cabecalho-->
+
+        <!--Menu de navegacao-->
+        <app-sidebar></app-sidebar>
+        <!--Fim navegacao-->
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Seja bem vindo</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">FINAN&Ccedil;A</a></li>
+                        <li class="breadcrumb-item active">RESUMO</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>SITUA&Ccedil;&Atilde;O FINANCEIRA</h4>
+                            </div>
+                            <div class="sales-chart">
+                                <div class="ct-bar-chart" style="height:350px">
+                                    <p class="text-info">
+                                        <strong>Total de Rendimentos:</strong> {{saldo[0]["TOTAL_RENDIMENTO"]}} AKZ
+
+                                    </p>
+                                    <p class="text-danger">
+                                        <strong>Total de Despesa:</strong> {{saldo[2]["TOTAL_DESPESA"]}} AKZ
+
+                                    </p>
+                                    <p class="text-warning">
+                                        <strong>Total de Poupan&ccedil;as:</strong> {{saldo[1]["TOTAL_POUPANCA"]}} AKZ
+
+                                    </p>
+                                    <p class="text-success">
+                                        <strong>Total Saldo:</strong> {{saldo[0]["TOTAL_RENDIMENTO"] - saldo[2]["TOTAL_DESPESA"] - saldo[1]["TOTAL_POUPANCA"] }} AKZ
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>RESUMO FINANCEIRO</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>M&ecirc;s</th>
+                                                <th>Rendimento</th>
+                                                <th>Despesa</th>
+                                                <th>Poupan&ccedil;a</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dado of estatisticaGeral">
+                                                <td>{{dado.mes}}</td>
+                                                <td>{{dado.valor_r}}&nbsp;Akzs</td>
+                                                <td>{{dado.valor_d}}&nbsp;Akzs</td>
+                                                <td>{{dado.valor_p}}&nbsp;Akzs</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+
+                <!-- End PAge Content -->
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+</body>

@@ -1,0 +1,20 @@
+.app-login .row {
+    margin-top: 20vh;
+}
+
+.app-login .panel-body {
+    padding: 14px;
+    box-shadow: 0px 0px 10px 3px #ccc;
+}
+
+
+/*botao de login*/
+
+.btn {
+    width: 512px;
+}
+
+.error-section {
+    color: red;
+    margin: 8px;
+}

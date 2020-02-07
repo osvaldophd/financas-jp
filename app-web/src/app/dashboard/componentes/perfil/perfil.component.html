@@ -1,0 +1,89 @@
+<body class="fix-header fix-sidebar">
+    <div class="main-wrapper">
+        <!--Cabecalho-->
+        <app-header></app-header>
+        <!--Fim Cabecalho-->
+
+        <!--Menu de navegacao-->
+        <app-sidebar></app-sidebar>
+        <!--Fim navegacao-->
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Seja bem vindo</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">USU&Aacute;RIOS</a></li>
+                        <li class="breadcrumb-item active">CONSULTA</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- formulario de empresa -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4><i class="fa fa-user"></i>&nbsp;EDITAR DADOS DO USU&Aacute;RIO</h4>
+                                <hr>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-elements">
+                                    <!--Mensagens de sucesso e insucesso-->
+                                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="errors">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{errors}}
+                                    </div>
+                                    <div class="alert alert-success alert-dismissible fade show" *ngIf="sucesso">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{sucesso}}
+                                    </div>
+                                    <!--Fim de Mensagens de sucesso e insucesso-->
+                                    <form [formGroup]="form" (ngSubmit)="registar()">
+                                        {{perfil | json}}
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Nome do usu&aacute;rio</label>
+                                                    <input type="text" formControlName="name" id="nome" class="form-control input-default" name="name" required="true">
+                                                    <input type="hidden" formControlName="id" id="id" class="form-control input-default" name="id" value="form.name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>E-mail</label>
+                                                    <input type="email" formControlName="email" id="email" value="form.name" class="form-control input-default" name="email" required="true">
+                                                </div>
+                                            </div>
+                                        </div><br>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Palavra-passe</label>
+                                                    <input type="password" formControlName="password" id="password" value="form.password" class="form-control input-default" name="password" required="true">
+                                                </div>
+                                            </div>
+                                        </div><br>
+                                        <button class="btn btn-success btn-sm" type="submit" [disabled]="!form.valid" name="regista_empresa"><i class="fa fa-edit"></i>&nbsp;&nbsp;SALVAR</button><br>
+                                        <hr>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+
+                <!-- End PAge Content -->
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+</body>

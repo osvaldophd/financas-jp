@@ -1,0 +1,20 @@
+<div *ngIf="climaObject">
+  <header>
+
+    <img class="img-weather" [src]="urlImagemClima(climaObject.list[0].weather[0].icon)" alt="">
+  </header>
+  <p class="first texto-centro">{{ climaObject.list[0].main.temp | number: '1.0-0'}}&#176;</p>
+  <p class="cloudy texto-centro">{{ climaObject.city.name }}</p>
+  <p class="dia-semana texto-centro">{{ climaObject.list[0].dt_txt | date: 'EEEE' }}</p>
+  <p class="texto-centro">{{ climaObject.list[0].dt_txt | date: 'dd/MMMM/yyyy'}}</p>
+  <div id="temperature">
+    <div id="min">
+      <i class="fas fa-angle-double-down"></i> {{ climaObject.list[0].main.temp_min | number: '1.0-0'}}
+      <span>Min</span>
+    </div>
+    <div id="max">
+      <i class="fas fa-angle-double-up"></i>
+      {{ climaObject.list[0].main.temp_max | number: '1.0-0'}}<span>Max</span>
+    </div>
+  </div>
+</div>

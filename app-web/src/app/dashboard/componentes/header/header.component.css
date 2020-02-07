@@ -1,0 +1,9 @@
+.menu-direito {
+    color: #3b3a3b;
+    font-size: 1.2em;
+    transition: .5s ease-in-out;
+    font-weight: 500;
+}
+.btn-click{
+  cursor: pointer;
+}

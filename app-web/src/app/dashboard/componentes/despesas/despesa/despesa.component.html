@@ -1,0 +1,139 @@
+<body class="fix-header fix-sidebar">
+    <div class="main-wrapper">
+        <!--Cabecalho-->
+        <app-header></app-header>
+        <!--Fim Cabecalho-->
+
+        <!--Menu de navegacao-->
+        <app-sidebar></app-sidebar>
+        <!--Fim navegacao-->
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Seja bem vindo</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">DESPESA</a></li>
+                        <li class="breadcrumb-item active">REGISTO</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4><i class="fa fa-suitcase"></i>&nbsp;REGISTO DE DESPESAS</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-elements">
+                                    <!--Mensagens de sucesso e insucesso-->
+                                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="errors">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{errors}}
+                                    </div>
+                                    <div class="alert alert-success alert-dismissible fade show" *ngIf="sucesso">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{sucesso}}
+                                    </div>
+                                    <!--Fim de Mensagens de sucesso e insucesso-->
+                                    <form [formGroup]="form" (ngSubmit)="registar()">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Despesas</label><br>
+                                                <div class="input-group" *ngIf="item">
+                                                    <select class="form-control input-default" formControlName="item_id" required>
+                                                        <option *ngFor="let data of item" value="{{data.id}}">
+                                                            {{data.nome}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;<label>Montante</label><br>
+                                                <div class="input-group col-md-12">
+                                                    <input type="number" name="valor" required formControlName="valor" min="0" class="form-control input-default col-md-12">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Akz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Prazo de pagamento</label><br>
+                                                <div class="input-group">
+                                                    <input type="date" name="prazo" required formControlName="prazo_pagamento" class="form-control input-default">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Rendimento</label><br>
+                                                <div class="input-group" *ngIf="rendimento">
+                                                    <select class="form-control input-default" formControlName="rendimento_id" required>
+                                                            <option *ngFor="let dataR of rendimento" value="{{dataR.id}}">
+                                                                {{dataR.mes}} - {{dataR.valor}} Akz </option>
+                                                        </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group" *ngIf="usuarioId">
+                                                    <input type="hidden" formControlName="user_id" value="{{usuarioId}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <button type="submit" [disabled]="!form.valid" class="btn btn-info btn-sm"><i
+                                                class="fa fa-save"></i>&nbsp;REGISTAR</button><br>
+                                        <hr>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4><i class="fa fa-suitcase"></i>&nbsp;DESPESAS REGISTADAS</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-elements">
+                                    <table class="table table-sm table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo de despesa</th>
+                                                <th>Montante</th>
+                                                <th>Data de registo</th>
+                                                <th>Prazo do pagamento</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dados of despesa">
+                                                <td>{{dados.nome}}</td>
+                                                <td>{{dados.valor}} &nbsp;Akzs</td>
+                                                <td>{{dados.created_at}}</td>
+                                                <td>{{dados.prazo_pagamento}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End PAge Content -->
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+</body>

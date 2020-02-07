@@ -1,0 +1,7 @@
+<div id="buscar">
+  <form [formGroup]="buscaForm" class="form-buscar" (ngSubmit)="buscarEscala()">
+    <button type="submit" [disabled]="!buscaForm">Pesquisar</button>
+     <input required type="date" formControlName="dataBusca" placeholder="Pesquisar...." />
+
+  </form>
+</div>

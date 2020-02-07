@@ -1,0 +1,122 @@
+<body class="fix-header fix-sidebar">
+    <div class="main-wrapper">
+        <!--Cabecalho-->
+        <app-header></app-header>
+        <!--Fim Cabecalho-->
+
+        <!--Menu de navegacao-->
+        <app-sidebar></app-sidebar>
+        <!--Fim navegacao-->
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Seja bem vindo</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">CATEGORIA</a></li>
+                        <li class="breadcrumb-item active">TIPO DESPESAS</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4 *ngIf="!submit"><i class="fa fa-table"></i>&nbsp;REGISTO DE CATEGORIAS DE DESPESAS</h4>
+                                <h4 *ngIf="submit"><i class="fa fa-table"></i>&nbsp;EDITAR DADOS DE CATEGORIAS DE DESPESAS</h4>
+                                <a (click)="nova()" *ngIf="submit" class="link link-primary pull-right">NOVO REGISTO</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-elements">
+                                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="errors">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{errors}}
+                                    </div>
+                                    <div class="alert alert-success alert-dismissible fade show" *ngIf="sucesso">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;&nbsp; {{sucesso}}
+                                    </div>
+                                    <form [formGroup]="form" (ngSubmit)="registar()">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Tipo de Despesa</label><br>
+                                                <div class="input-group">
+                                                    <input type="text" name="nome" class="form-control input-default" formControlName="nome" required="true" value="form.nome">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Descri&ccedil;&atilde;o</label><br>
+                                                <div class="input-group">
+                                                    <textarea class="form-control input-default" name="desccricao" formControlName="descricao"> {{teste}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                        <button *ngIf="!submit" type="submit" [disabled]="!form.valid" class="btn btn-info btn-sm "><i class="fa fa-save "></i>&nbsp;REGISTAR</button><br>
+                                        <button *ngIf="submit" class="btn btn-success btn-sm" type="submit" [disabled]="!form.valid"><i class="fa fa-edit"></i>&nbsp;&nbsp;SALVAR</button><br>
+                                        <hr>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+
+                <!--Listagem de categorias de despesas-->
+                <div class="row" *ngIf="item">
+                    <div class="col-lg-12 ">
+                        <div class="card ">
+                            <div class="card-title ">
+                                <h4><i class="fa fa-table "></i>&nbsp;CATEGORIAS DE DESPESAS REGISTADAS</h4>
+                            </div>
+                            <div class="card-body ">
+                                <div class="basic-elements ">
+                                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="errors_resposta">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{errors_resposta}}
+                                    </div>
+                                    <div class="alert alert-success alert-dismissible fade show" *ngIf="sucesso_resposta">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{sucesso_resposta}}
+                                    </div>
+                                    <table class="table table-sm table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo de Despesa</th>
+                                                <th>Descri&ccedil;&atilde;o</th>
+                                                <th>Qu&ecirc; Fazer?</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dados of item">
+                                                <td>{{dados.nome}}</td>
+                                                <td>{{dados.descricao}}</td>
+                                                <td>
+                                                    <a (click)="EditarItem(dados)" class="link link-info btn-sm "><i class="fa fa-edit "></i>&nbsp;EDITAR</a>
+                                                    <a (click)="eliminar(dados.id)" class="link link-danger btn-sm "><i class="fa fa-trash "></i>&nbsp;ELIMINAR</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fim da listagem -->
+                <!-- End PAge Content -->
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+</body>

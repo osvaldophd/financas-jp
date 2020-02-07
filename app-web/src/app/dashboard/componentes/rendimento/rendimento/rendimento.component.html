@@ -1,0 +1,131 @@
+<body class="fix-header fix-sidebar">
+    <div class="main-wrapper">
+        <!--Cabecalho-->
+        <app-header></app-header>
+        <!--Fim Cabecalho-->
+
+        <!--Menu de navegacao-->
+        <app-sidebar></app-sidebar>
+        <!--Fim navegacao-->
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Seja bem vindo</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">RENDIMENTO</a></li>
+                        <li class="breadcrumb-item active">REGISTO</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4><i class="fa fa-bar-chart"></i>&nbsp;REGISTO DE RENDIMENTO</h4>
+                                <hr>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-elements">
+                                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="errors">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;{{errors}}
+                                    </div>
+                                    <div class="alert alert-success alert-dismissible fade show" *ngIf="sucesso">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>RESULTADO!</strong>&nbsp;&nbsp;{{sucesso}}
+                                    </div>
+                                    <form [formGroup]="form" (ngSubmit)="registar()">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome da empresa</label><br>
+                                                <div class="input-group" *ngIf="empresas">
+                                                    <select class="form-control input-default" formControlName="empresa_id" required>
+                                                        <option *ngFor="let data of empresas" value="{{data.id}}">
+                                                            {{data.nome_empresa}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;<label>Montante</label><br>
+                                                <div class="input-group col-md-12">
+                                                    <input type="number" min="0" formControlName="valor" class="form-control input-default col-md-12">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Akz</span>
+                                                    </div>
+                                                </div>
+                                            </div><br><br><br><br>
+                                            <div class="col-md-6">
+                                                <label>M&ecirc;s</label>
+                                                <select class="form-control input-default" formControlName="mes" required>
+                                                        <option value="Janeiro">Janeiro</option>
+                                                        <option value="Fevereiro">Fevereiro</option>
+                                                        <option value="marco">Mar&ccedil;o</option>
+                                                        <option value="Abril">Abril</option>
+                                                        <option value="Maio">Maio</option>
+                                                        <option value="Junho">Junho</option>
+                                                        <option value="Julho">Julho</option>
+                                                        <option value="Agosto">Agosto</option>
+                                                        <option value="Setembro">Setembro</option>
+                                                        <option value="Outubro">Outubro</option>
+                                                        <option value="Novembro">Novembro</option>
+                                                        <option value="Dezembro">Dezembro</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                        <button type="submit" class="btn btn-info btn-sm"><i
+                                                class="fa fa-save"></i>&nbsp;REGISTAR</button><br>
+                                        <hr>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4><i class="fa fa-bar-chart"></i>&nbsp;RENDIMENTOS REGISTADOS</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-elements">
+                                    <table class="table table-sm table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome da Empresa</th>
+                                                <th>Montante</th>
+                                                <th>Data de Registo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dados of rendimento">
+                                                <td>{{dados.nome_empresa}}</td>
+                                                <td>{{dados.valor}} &nbsp;Akzs</td>
+                                                <td>{{dados.created_at}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End PAge Content -->
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+</body>
